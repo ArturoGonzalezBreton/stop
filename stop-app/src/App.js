@@ -3,13 +3,11 @@ import { Route, Routes } from "react-router-dom";
 import Register from "./components/create";
 import {
   StyleSheet,
-  Button,
   View,
   SafeAreaView,
   TouchableOpacity,
   Text,
   TextInput,
-  Alert,
   Dimensions,
 } from 'react-native';
 
