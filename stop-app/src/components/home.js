@@ -9,18 +9,18 @@ import {
   SafeAreaView,
   TextInput,
   Dimensions,
+  Text,
+  View,
+  Alert
 } from "react-native"
 
 import { 
-  Separator, 
-  TextSeparator 
+  Separator,
 } from "../assets/separator";
 
 import AppButton from "../assets/button";
 
-import Message from "../assets/message";
-
-const styles = StyleSheet.create({
+var styles = StyleSheet.create({
   container: {
     flex:1,
     width: Dimensions.get('window').width,
@@ -46,7 +46,27 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 12,
     color: 'white'
-  }
+  },
+  textHidden: {
+    fontSize: 16,
+    color: "#000",
+    fontWeight: "bold",
+    alignSelf: "center",
+    textTransform: "uppercase"
+  },
+  text: {
+    fontSize: 16,
+    color: "#ff0045",
+    fontWeight: "bold",
+    alignSelf: "center",
+    textTransform: "uppercase"
+  },
+  appButtonContainer: {
+    elevation: 8,
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+  },
 });
 
 function Home() {
@@ -57,7 +77,7 @@ function Home() {
       if (inputValue) {
           navigate('/create');
       } else {
-          setShowMessage(!showMessage);
+        setShowMessage(true);
       }
   }
   return (
@@ -70,8 +90,11 @@ function Home() {
           value={inputValue}
           style={styles.input}
         />
-  
-        <TextSeparator />
+        <View style={styles.appButtonContainer}>
+          <Text style={showMessage ? styles.text : styles.textHidden}>
+            Por favor, ingresa un nombre
+          </Text>
+        </View>
         <AppButton
           onPress={NavigateToCreate} 
           title="Crear Sala" 
